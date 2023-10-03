@@ -1,5 +1,5 @@
 #include <string>
-#include "passenger.h"
+#include "Passenger.h"
 
 using namespace std;
 
@@ -29,7 +29,7 @@ using namespace std;
     Passenger::Passenger(string n, string pPref, int pID, float rateReq, bool hPets, bool isHandi) {
         name = n;
         paymentPref = pPref;
-        passID = pID;
+        passID += pID;
         ratingRequirement = rateReq;
         hasPets = hPets;
         isHandicap = isHandi;
@@ -40,9 +40,6 @@ using namespace std;
     void Passenger::setPaymentPref(string pPref){
         paymentPref = pPref;
     }
-    void Passenger::setPassId(int pID){
-        passID = pID;
-    }
     void Passenger::setRatingReq(float ratReq){
         ratingRequirement = ratReq;
     }
@@ -51,4 +48,7 @@ using namespace std;
     }
     void Passenger::setIsHandicap(bool isHandi){
         isHandicap = isHandi;
+    }
+    void Passenger::setPassId(int id){
+        this.id += id;
     }

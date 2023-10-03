@@ -13,25 +13,25 @@ class Passenger{
     //Setters
     void setName(string nm);
     void setPaymentPref(string pPref);
-    void setPassId(int pID);
     void setRatingReq(float ratReq);
     void setHasPets(bool hPets);
     void setIsHandicap(bool isHandi);
     //Getters
     string getName() const {return name;}
     string getPaymentPref() const {return paymentPref;}
-    int getPassID() const {return passId;}
+    int getPassID() const {return passID;}
     float getRatingRequirement() const {return ratingRequirement;}
     bool getHasPets() const {return hasPets;}
     bool getIsHandicap() const {return isHandicap;}
-
+    //Increment passenger ID
+    void setPassId(int id);
     private:
     string name;
     string paymentPref;
-    int passID;
+    int passID = 100000;
     float ratingRequirement;
     bool hasPets;
     bool isHandicap;
 
-}
+};
 #endif
