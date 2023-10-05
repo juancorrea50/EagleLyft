@@ -14,13 +14,13 @@ Passengers::Passengers(vector<Passenger*> pVect, int pCount){
     passVector = pVect;
     passengerCount = pCount;
 }
-void Passengers::addPassenger() const{
+void Passengers::addPassenger(){
     string n, pPref;
     int id;
     float ratReq;
     bool isHC, hsPets;
     char iHandi, hPets;
-    Passenger* temp = NULL;
+    Passenger* temp;
 
     cout << "Enter your(passenger's) name: " << endl;
     cin >> n;
