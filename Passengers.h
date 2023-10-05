@@ -13,6 +13,6 @@ class Passengers{
     void addPassenger() const;
     private:
     int passengerCount;
-    map<int,Passenger*> passengerMap;
+    vector<Passenger*> passVector;
 };
 #endif

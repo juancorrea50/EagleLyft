@@ -10,7 +10,8 @@ Passengers::Passengers(){
     passengerCount = 0;
 }
 
-Passengers::Passengers(int pCount){
+Passengers::Passengers(vector<Passenger> pVect, int pCount){
+    passVector = pVect;
     passengerCount = pCount;
 }
 void Passengers::addPassenger() const{
