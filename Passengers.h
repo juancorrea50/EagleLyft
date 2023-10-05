@@ -14,6 +14,6 @@ class Passengers{
     private:
     int passengerCount;
     //Pointer vector
-    vector<Passenger *> passVector;
+    vector<Passenger*> passVector;
 };
 #endif
