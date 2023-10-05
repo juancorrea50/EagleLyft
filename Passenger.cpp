@@ -6,19 +6,22 @@ using namespace std;
     Passenger::Passenger(){
         name = "none";
         paymentPref = "notChosen";
-        passID = 0;
+        pID = 100000;
         ratingRequirement = 0.00;
         hasPets = false;
         isHandicap = false;
     }
-    Passenger::Passenger(string n, string pPref, int pID, float rateReq, bool hPets, bool isHandi) {
+    Passenger::Passenger(string n, string pPref, int pId, float rateReq, bool hPets, bool isHandi) {
         name = n;
         paymentPref = pPref;
-        passID += pID;
+        pID = 100000 + pID;
         ratingRequirement = rateReq;
         hasPets = hPets;
         isHandicap = isHandi;
     }
+    //Getters defined in header file
+
+    //Setters
     void Passenger::setName(string nm){
         name = nm;
     }
@@ -34,6 +37,6 @@ using namespace std;
     void Passenger::setIsHandicap(bool isHandi){
         isHandicap = isHandi;
     }
-    void Passenger::setPassId(int pId){
-        passID += pId;
+    void Passenger::setpID(int pId){
+        pID += pId;
     }
