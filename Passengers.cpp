@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <map>
+#include <vector>
 #include "Passengers.h"
 
 
@@ -19,8 +19,8 @@ void Passengers::addPassenger() const{
     int id;
     float ratReq;
     bool isHC, hsPets;
-    string iHandi, hPets;
-    Passenger* temp;
+    char iHandi, hPets;
+    Passenger* temp = NULL;
 
     cout << "Enter your(passenger's) name: " << endl;
     cin >> n;
@@ -39,22 +39,22 @@ void Passengers::addPassenger() const{
     cin.ignore();
 
     //While loops to ensure usable answer for boolean values
-    while(tolower(iHandi) != "n" || tolower(iHandi) != "no" || tolower(iHandi) != "y" || tolower(iHandi) != "yes"){
+    while(tolower(iHandi) != 'n' || tolower(iHandi) != 'y'){
         cout << "Are you in need of a handicap vehicle?" << endl;
         cin >> iHandi;
         cin.ignore();
-        if(tolower(iHandi) == "y" || tolower(iHandi) == "yes"){
+        if(tolower(iHandi) == 'y'){
             isHC = true;
-        } else if(tolower(iHandi) == "n" || tolower(iHandi) == "no"){
+        } else if(tolower(iHandi) == 'n'){
             isHC = false;
         }
     }
-    while(tolower(hPets) != "n" || tolower(hPets) != "no" || tolower(hPets) != "y" || tolower(hPets) != "yes"){
+    while(tolower(hPets) != 'n' || tolower(hPets) != 'y'){
         cout << "Do you have pets for your trips?" << endl;
         cin >> hPets;
-        if(tolower(hPets) == "y" || tolower(hPets) = "yes"){
+        if(tolower(hPets) == 'y'){
             hsPets = true;
-        } else if(tolower(hPets) == "n" || tolower(hPets) == "no"){
+        } else if(tolower(hPets) == 'n'){
             hsPets = false;
         }
     }

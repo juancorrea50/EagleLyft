@@ -8,9 +8,9 @@ using namespace std;
 class Passengers{
     public:
     Passengers();
-    Passengers(int pCount);
+    Passengers(vector<Passenger*> pVect, int pCount);
     //Add Passenger 1st prio testing
-    void addPassenger() const;
+    void addPassenger();
     private:
     int passengerCount;
     //Pointer vector
