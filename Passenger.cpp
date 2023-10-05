@@ -3,21 +3,6 @@
 
 using namespace std;
 
-/*    //Default Contructor
-
-    //Param Constructor
-
-    //Setters
-
-    
-    string name;
-    string paymentPref;
-    int passID;
-    float ratingRequirement;
-    bool hasPets;
-    bool isHandicap;
-    
-    */
     Passenger::Passenger(){
         name = "none";
         paymentPref = "notChosen";
@@ -49,6 +34,6 @@ using namespace std;
     void Passenger::setIsHandicap(bool isHandi){
         isHandicap = isHandi;
     }
-    void Passenger::setPassId(int id){
-        this.id += id;
+    void Passenger::setPassId(int pId){
+        passID += pId;
     }

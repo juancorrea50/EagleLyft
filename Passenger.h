@@ -24,7 +24,7 @@ class Passenger{
     bool getHasPets() const {return hasPets;}
     bool getIsHandicap() const {return isHandicap;}
     //Increment passenger ID
-    void setPassId(int id);
+    void setPassId(int pId);
     private:
     string name;
     string paymentPref;

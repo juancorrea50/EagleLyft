@@ -1,6 +1,6 @@
 #ifndef PASSENGERS_H
 #define PASSENGERS_H
-#include <map>
+#include <vector>
 #include "Passenger.h"
 
 using namespace std;
@@ -13,6 +13,7 @@ class Passengers{
     void addPassenger() const;
     private:
     int passengerCount;
-    vector<Passenger*> passVector;
+    //Pointer vector
+    vector<Passenger *> passVector;
 };
 #endif
