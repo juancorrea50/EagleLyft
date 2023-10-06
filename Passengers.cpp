@@ -16,7 +16,6 @@ Passengers::Passengers(vector<Passenger*> pVect, int pCount){
 }
 void Passengers::addPassenger(){
     string n, pPref;
-    int id;
     float ratReq;
     bool isHC, hsPets;
     char iHandi, hPets;
@@ -26,9 +25,6 @@ void Passengers::addPassenger(){
     cin >> n;
     cin.ignore();
 
-    cout << "Enter passenger's id (# entered + 100000): " << endl;
-    cin >> id;
-    cin.ignore();
 
     cout << "Enter payment preference (Card or Cash):" << endl;
     cin >> pPref;
@@ -36,29 +32,33 @@ void Passengers::addPassenger(){
 
     cout << "Enter rating requirement for driver (Out of 5 stars): " << endl;
     cin >> ratReq;
-    //cin.ignore();
+    cin.ignore();
 
     //While loops to ensure usable answer for boolean values
-    //while(tolower(iHandi) != 'n' || tolower(iHandi) != 'y'){
+    do{
         cout << "Are you in need of a handicap vehicle? (y/n)" << endl;
         cin >> iHandi;
-        if(tolower(iHandi) == 'y'){
+        cin.ignore();
+        if((char)tolower(iHandi) == 'y'){
             isHC = true;
+            cout << iHandi << endl;
         } else if(tolower(iHandi) == 'n'){
             isHC = false;
         }
-    //}
-    //while(tolower(hPets) != 'n' || tolower(hPets) != 'y'){
+    }while((char)tolower(iHandi) != 'y' && (char)tolower(iHandi) != 'n');
+    do{
         cout << "Do you have pets for your trips? (y/n)" << endl;
         cin >> hPets;
-        if(tolower(hPets) == 'y'){
+        cin.ignore();
+        if((char)tolower(hPets) == 'y'){
             hsPets = true;
-        } else if(tolower(hPets) == 'n'){
+        } else if((char)tolower(hPets) == 'n'){
             hsPets = false;
         }
-    //}
+    }while((char)tolower(hPets) != 'n' && (char)tolower(hPets) != 'y');
 
-    temp = new Passenger(n, pPref, id, ratReq, isHC, hsPets);
+    temp = new Passenger(n, pPref, ratReq, isHC, hsPets);
+    temp->incPassId();
     passVector.push_back(temp);
     cout << "Name: " << temp->getName() << endl;
     cout << "ID: " << temp->getpID() << endl;

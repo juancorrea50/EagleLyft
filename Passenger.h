@@ -9,7 +9,7 @@ class Passenger{
     //Default Contructor
     Passenger();
     //Param Constructor
-    Passenger(string n, string pPref, int pId, float rateReq, bool hPets, bool isHandi);
+    Passenger(string n, string pPref, float rateReq, bool hPets, bool isHandi);
     //Setters
     void setName(string nm);
     void setPaymentPref(string pPref);
@@ -24,7 +24,7 @@ class Passenger{
     bool getHasPets() const {return hasPets;}
     bool getIsHandicap() const {return isHandicap;}
     //Increment passenger ID
-    void setpID(int pId);
+    void incPassId();
     private:
     string name;
     string paymentPref;
