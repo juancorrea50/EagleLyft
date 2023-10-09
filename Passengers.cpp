@@ -5,15 +5,19 @@
 
 
 using namespace std;
-
+//Constructors
 Passengers::Passengers(){
     passengerCount = 0;
 }
-
-Passengers::Passengers(vector<Passenger*> pVect, int pCount){
+Passengers::Passengers(vector<Passenger*> pVect){
     passVector = pVect;
-    passengerCount = pCount;
+    passengerCount++;
 }
+// Increment Passenger ID
+void Passengers::incPassId(){
+    pID++;
+}
+//Add Passenger to vector
 void Passengers::addPassenger(){
     string n, pPref;
     float ratReq;
@@ -58,14 +62,21 @@ void Passengers::addPassenger(){
     }while((char)tolower(hPets) != 'n' && (char)tolower(hPets) != 'y');
 
     temp = new Passenger(n, pPref, ratReq, isHC, hsPets);
-    temp->incPassId();
+    incPassId();
+    printPassenger(temp);
     passVector.push_back(temp);
+
+    delete temp;
+}
+//Print Passenger from pointer
+void Passengers::printPassenger(Passenger* temp){
+    char iHandi = (temp->getIsHandicap() == true) ? 'Y' : 'N';
+    char hPets = (temp->getHasPets() == true) ? 'Y' : 'N';
+
     cout << "Name: " << temp->getName() << endl;
-    cout << "ID: " << temp->getpID() << endl;
+    cout << "ID: " << getpID() << endl;
     cout << "Payment Preference: " << temp->getPaymentPref() << endl;
     cout << "Rating Requirement: " << temp->getRatingRequirement() << endl;
-    cout << "Handicap: " << (char)toupper(iHandi) << endl;
-    cout << "Pets: " << (char)toupper(hPets) << endl;
-    delete temp;
-
+    cout << "Handicap: " << iHandi << endl;
+    cout << "Pets: " << hPets<< endl;
 }

@@ -6,7 +6,6 @@ using namespace std;
     Passenger::Passenger(){
         name = "none";
         paymentPref = "notChosen";
-        pID = 100000;
         ratingRequirement = 0.00;
         hasPets = false;
         isHandicap = false;
@@ -14,8 +13,8 @@ using namespace std;
     Passenger::Passenger(string n, string pPref, float rateReq, bool hPets, bool isHandi) {
         name = n;
         paymentPref = pPref;
-        pID = 100000;
         ratingRequirement = rateReq;
+        //pID is incremented on execution
         hasPets = hPets;
         isHandicap = isHandi;
     }
@@ -37,6 +36,4 @@ using namespace std;
     void Passenger::setIsHandicap(bool isHandi){
         isHandicap = isHandi;
     }
-    void Passenger::incPassId(){
-        pID++;
-    }
+

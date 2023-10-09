@@ -7,12 +7,20 @@ using namespace std;
 
 class Passengers{
     public:
+    //Construcors
     Passengers();
-    Passengers(vector<Passenger*> pVect, int pCount);
+    Passengers(vector<Passenger*> pVect);
     //Add Passenger 1st prio testing
     void addPassenger();
+    //Print
+    void printPassenger(Passenger* temp);
+    //Get for pID
+    int getpID() const {return pID;}
+    //Increment passenger ID
+    void incPassId();
     private:
     int passengerCount;
+    int pID = 100000;
     //Pointer vector
     vector<Passenger*> passVector;
 };

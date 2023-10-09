@@ -19,16 +19,14 @@ class Passenger{
     //Getters
     string getName() const {return name;}
     string getPaymentPref() const {return paymentPref;}
-    int getpID() const {return pID;}
     float getRatingRequirement() const {return ratingRequirement;}
     bool getHasPets() const {return hasPets;}
     bool getIsHandicap() const {return isHandicap;}
-    //Increment passenger ID
-    void incPassId();
+
+
     private:
     string name;
     string paymentPref;
-    int pID;
     float ratingRequirement;
     bool hasPets;
     bool isHandicap;
