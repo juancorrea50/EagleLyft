@@ -13,14 +13,14 @@ class Passengers{
     //Add Passenger 1st prio testing
     void addPassenger();
     //Print
-    void printPassenger(Passenger* temp);
+    void printPassengers();
     //Get for pID
     int getpID() const {return pID;}
     //Increment passenger ID
     void incPassId();
     private:
     int passengerCount;
-    int pID = 100000;
+    int pID;
     //Pointer vector
     vector<Passenger*> passVector;
 };

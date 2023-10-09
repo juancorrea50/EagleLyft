@@ -8,10 +8,12 @@ using namespace std;
 //Constructors
 Passengers::Passengers(){
     passengerCount = 0;
+    pID = 100000;
 }
 Passengers::Passengers(vector<Passenger*> pVect){
     passVector = pVect;
     passengerCount++;
+    pID = 100000;
 }
 // Increment Passenger ID
 void Passengers::incPassId(){
@@ -42,7 +44,7 @@ void Passengers::addPassenger(){
     do{
         cout << "Are you in need of a handicap vehicle? (y/n)" << endl;
         cin >> iHandi;
-        cin.ignore();
+        
         if((char)tolower(iHandi) == 'y'){
             isHC = true;
             cout << iHandi << endl;
@@ -53,7 +55,7 @@ void Passengers::addPassenger(){
     do{
         cout << "Do you have pets for your trips? (y/n)" << endl;
         cin >> hPets;
-        cin.ignore();
+        
         if((char)tolower(hPets) == 'y'){
             hsPets = true;
         } else if((char)tolower(hPets) == 'n'){
@@ -63,20 +65,30 @@ void Passengers::addPassenger(){
 
     temp = new Passenger(n, pPref, ratReq, isHC, hsPets);
     incPassId();
-    printPassenger(temp);
+    passengerCount++;
+    ///*
+    cout << n << " " << pPref <<" " << ratReq << " " << isHC << " " << hsPets << endl;
+    //*/
     passVector.push_back(temp);
-
-    delete temp;
 }
 //Print Passenger from pointer
-void Passengers::printPassenger(Passenger* temp){
-    char iHandi = (temp->getIsHandicap() == true) ? 'Y' : 'N';
-    char hPets = (temp->getHasPets() == true) ? 'Y' : 'N';
+void Passengers::printPassengers(){
+    unsigned int i;
+    char iHandi;
+    char hPets;
+    for(i=0;i<passVector.size();i++){
+        iHandi = ((passVector.at(i))->getIsHandicap() == true) ? 'Y' : 'N';
+        hPets = ((passVector.at(i))->getHasPets() == true) ? 'Y' : 'N';
+        cout << "Name: " << (passVector.at(i))->getName() << endl;
+        cout << "ID: " << getpID() << endl;
+        cout << "Payment Preference: " << (passVector.at(i))->getPaymentPref() << endl;
+        cout << "Rating Requirement: " << (passVector.at(i))->getRatingRequirement() << endl;
+        cout << "Handicap: " << iHandi << endl;
+        cout << "Pets: " << hPets<< endl;
+    }
+    cout << "Passenger Total: " << passengerCount << endl;
+    
+     
 
-    cout << "Name: " << temp->getName() << endl;
-    cout << "ID: " << getpID() << endl;
-    cout << "Payment Preference: " << temp->getPaymentPref() << endl;
-    cout << "Rating Requirement: " << temp->getRatingRequirement() << endl;
-    cout << "Handicap: " << iHandi << endl;
-    cout << "Pets: " << hPets<< endl;
+
 }
