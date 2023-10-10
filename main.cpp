@@ -13,7 +13,7 @@ int main(){
 
     while(choice == -1 || choice != 0){
         cout << "Welcome to EagleLyft:" << endl;
-        cout << "0- Quit 1- Add item 2- Add customer 3- Add order 4- Print customers 5- Print items " << endl;
+        cout << "0- Quit 1- Add item 2- Add customer 3- Add order 4- Print Passengers 5- Print items " << endl;
         cout << "6- Print orders 7- Delete customer 8- Delete order 9- Delete item" << endl;
         cout << "Please choose an option: " << endl;
         cin >> choice;

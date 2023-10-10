@@ -8,10 +8,12 @@ using namespace std;
 //Constructors
 Passengers::Passengers(){
     passengerCount = 0;
+    pID = 100000;
 }
 Passengers::Passengers(vector<Passenger*> pVect){
     passVector = pVect;
     passengerCount++;
+    pID = 100000;
 }
 // Increment Passenger ID
 int Passengers::incPassId(){
@@ -43,7 +45,7 @@ void Passengers::addPassenger(){
     do{
         cout << "Are you in need of a handicap vehicle? (y/n)" << endl;
         cin >> iHandi;
-        cin.ignore();
+        
         if((char)tolower(iHandi) == 'y'){
             isHC = true;
             cout << iHandi << endl;
@@ -54,7 +56,7 @@ void Passengers::addPassenger(){
     do{
         cout << "Do you have pets for your trips? (y/n)" << endl;
         cin >> hPets;
-        cin.ignore();
+        
         if((char)tolower(hPets) == 'y'){
             hsPets = true;
         } else if((char)tolower(hPets) == 'n'){
