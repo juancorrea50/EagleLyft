@@ -8,12 +8,9 @@ using namespace std;
 //Constructors
 Passengers::Passengers(){
     passengerCount = 0;
-    pID = 100000;
 }
 Passengers::Passengers(vector<Passenger*> pVect){
     passVector = pVect;
-    passengerCount++;
-    pID = 100000;
 }
 // Increment Passenger ID
 int Passengers::incPassId(){
@@ -67,8 +64,6 @@ void Passengers::addPassenger(){
     temp = new Passenger(n, pPref,incPassId(), ratReq, isHC, hsPets);
     
     passVector.push_back(temp);
-    //delete temp object
-    //delete temp;
 }
 //Print Passenger from pointer
 void Passengers::printPassengers(){
