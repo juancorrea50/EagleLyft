@@ -6,15 +6,16 @@ using namespace std;
     Passenger::Passenger(){
         name = "none";
         paymentPref = "notChosen";
+        pID = 100000;
         ratingRequirement = 0.00;
         hasPets = false;
         isHandicap = false;
     }
-    Passenger::Passenger(string n, string pPref, float rateReq, bool hPets, bool isHandi) {
+    Passenger::Passenger(string n, string pPref, int passID, float rateReq, bool hPets, bool isHandi) {
         name = n;
         paymentPref = pPref;
         ratingRequirement = rateReq;
-        //pID is incremented on execution
+        pID = passID + 100000;
         hasPets = hPets;
         isHandicap = isHandi;
     }

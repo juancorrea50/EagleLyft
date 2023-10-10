@@ -26,6 +26,9 @@ int main(){
             //Add Passenger
             passengers.addPassenger();
             break;
+            case 4:
+            passengers.printPassengers();
+            break;
             default:
             cout << "Switch skipped" << endl;
         }

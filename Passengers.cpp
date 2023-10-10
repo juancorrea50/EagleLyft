@@ -14,8 +14,9 @@ Passengers::Passengers(vector<Passenger*> pVect){
     passengerCount++;
 }
 // Increment Passenger ID
-void Passengers::incPassId(){
-    pID++;
+int Passengers::incPassId(){
+    passengerCount++;
+    return passengerCount;
 }
 //Add Passenger to vector
 void Passengers::addPassenger(){
@@ -60,23 +61,28 @@ void Passengers::addPassenger(){
             hsPets = false;
         }
     }while((char)tolower(hPets) != 'n' && (char)tolower(hPets) != 'y');
-
-    temp = new Passenger(n, pPref, ratReq, isHC, hsPets);
-    incPassId();
-    printPassenger(temp);
+    //Create temp object in memory and push into vector with the pID incrementing by using the passengerCount variable
+    temp = new Passenger(n, pPref,incPassId(), ratReq, isHC, hsPets);
+    
     passVector.push_back(temp);
-
-    delete temp;
+    //delete temp object
+    //delete temp;
 }
 //Print Passenger from pointer
-void Passengers::printPassenger(Passenger* temp){
-    char iHandi = (temp->getIsHandicap() == true) ? 'Y' : 'N';
-    char hPets = (temp->getHasPets() == true) ? 'Y' : 'N';
+void Passengers::printPassengers(){
+    unsigned int i;
+    char iHandi;
+    char hPets;
+    for(i=0;i<passVector.size();i++){
+        iHandi = (passVector.at(i)->getIsHandicap() == true) ? 'Y' : 'N';
+        hPets = (passVector.at(i)->getHasPets() == true) ? 'Y' : 'N';
+        
+        cout << "Name: " << passVector.at(i)->getName() << endl;
+        cout << "ID: " << passVector.at(i)->getpID() << endl;
+        cout << "Payment Preference: " << passVector.at(i)->getPaymentPref() << endl;
+        cout << "Rating Requirement: " << passVector.at(i)->getRatingRequirement() << endl;
+        cout << "Handicap: " << iHandi << endl;
+        cout << "Pets: " << hPets<< endl;
+    }
 
-    cout << "Name: " << temp->getName() << endl;
-    cout << "ID: " << getpID() << endl;
-    cout << "Payment Preference: " << temp->getPaymentPref() << endl;
-    cout << "Rating Requirement: " << temp->getRatingRequirement() << endl;
-    cout << "Handicap: " << iHandi << endl;
-    cout << "Pets: " << hPets<< endl;
 }
