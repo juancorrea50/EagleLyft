@@ -8,13 +8,16 @@ Passengers passengers;
 
 int main(){
     int choice =-1;
+    //Will use for input when tasked to delete
+    int id = 0;
 
-
+    //Load file
+    passengers.loadPassengers();
 
     while(choice == -1 || choice != 0){
         cout << "Welcome to EagleLyft:" << endl;
-        cout << "0- Quit 1- Add item 2- Add customer 3- Add order 4- Print Passengers 5- Print items " << endl;
-        cout << "6- Print orders 7- Delete customer 8- Delete order 9- Delete item" << endl;
+        cout << "0- Quit 1- Add Driver 2- Add Passenger 3- Add Ride 4- Print Passengers 5- Print Drivers " << endl;
+        cout << "6- Print Rides 7- Delete Passenger 8- Delete Ride 9- Delete Driver" << endl;
         cout << "Please choose an option: " << endl;
         cin >> choice;
         
@@ -22,7 +25,7 @@ int main(){
             case 0:
             //Quit option
             break;
-            case 1:
+            case 2:
             //Add Passenger
             passengers.addPassenger();
             break;
@@ -34,5 +37,7 @@ int main(){
         }
 
     }
+    passengers.savePassengers();
+    
     return 0;
 }

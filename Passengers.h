@@ -10,13 +10,21 @@ class Passengers{
     //Construcors
     Passengers();
     Passengers(vector<Passenger*> pVect);
+    //Increment passenger ID
+    int incPassCount();
+    //Decrement pass count
+    void decPassCount(){passengerCount--;}
     //Add Passenger 1st prio testing
     void addPassenger();
-    //Print
+    //Print passVector
     void printPassengers();
-    //Increment passenger ID
-    int incPassId();
+    //Load in Passengers data file
+    void loadPassengers();
+    //Save Passengers into a data file
+    void savePassengers();
+
     private:
+    //Count of all passengers in vector
     int passengerCount;
     //Pointer vector
     vector<Passenger*> passVector;
