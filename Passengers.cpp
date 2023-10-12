@@ -133,7 +133,7 @@ void Passengers::savePassengers(){
         //temp becomes the passenger pointer that it points to
         temp = *it;
         //Saves all the variable data in order of object instanciation
-        fout << temp->getName() <<" "<< temp->getPaymentPref()<< " " << temp->getpID()<< " " << temp->getRatingRequirement()<< " " << temp->getIsHandicap()<< " " << temp->getHasPets();
+        fout << temp->getName() <<" "<< temp->getPaymentPref()<< " " << temp->getpID()<< " " << temp->getRatingRequirement()<< " " << temp->getIsHandicap()<< " " << temp->getHasPets() << "\n";
     }
     //close output file
     fout.close();
@@ -141,15 +141,17 @@ void Passengers::savePassengers(){
 //Edit design to include this function
 Passenger* Passengers::findPassenger(int id){
     unsigned int i;
+    Passenger* temp;
     
     for(i=0;i<passVector.size();i++){
         if(passVector.at(i)->getpID() == id){
-            return passVector.at(i);
-            cout << passVector.at(i) << endl;
+            temp = passVector.at(i);
+        } else{
+            cout << "ID not found in passengers."<< endl;
         }
     }
-    cout << "ID not found in passengers."<< endl;
-    
+
+    return temp;
 }
 void Passengers::editPassenger(int id){
     int choice = -1;
