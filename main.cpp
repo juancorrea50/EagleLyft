@@ -31,9 +31,11 @@ int main(){
             passengers.addPassenger();
             break;
             case 4:
+            //Print passenger vector
             passengers.printPassengers();
             break;
             case 10:
+            //Edit one of the 3 choices
                 while(editChoice == -1 || editChoice > 3 || editChoice != 0 || editChoice < 0){
                 cout << "Would you like to edit a 1- Passenger 2- driver or 3- ride? (Enter 0 to quit)" << endl;
                 cin >> editChoice;
@@ -48,8 +50,13 @@ int main(){
                     
                     break;
                     }
-
                 }
+            case 7:
+            //Delete passenger
+            cout << "Enter id to delete passenger" << endl;
+            cin >> id;
+            passengers.deletePassenger(id);
+            break;
             break;
             default:
             cout << "Switch skipped" << endl;
@@ -57,6 +64,7 @@ int main(){
 
     }
     passengers.savePassengers();
+    passengers.cleanUp();
     
     return 0;
 }

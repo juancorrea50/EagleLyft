@@ -26,6 +26,10 @@ class Passengers{
     Passenger* findPassenger(int id);
     //Edit function 
     void editPassenger(int id);
+    //Delete function
+    void deletePassenger(int id);
+    //Memory Cleanup
+    void cleanUp();
 
     private:
     //Count of all passengers in vector

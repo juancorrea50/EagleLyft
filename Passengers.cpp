@@ -146,8 +146,6 @@ Passenger* Passengers::findPassenger(int id){
     for(i=0;i<passVector.size();i++){
         if(passVector.at(i)->getpID() == id){
             temp = passVector.at(i);
-        } else{
-            cout << "ID not found in passengers."<< endl;
         }
     }
 
@@ -200,7 +198,18 @@ void Passengers::editPassenger(int id){
             break;
         }
     }
-
-    
-
+}
+void Passengers::deletePassenger(int id){
+    Passenger* temp = findPassenger(id);
+    unsigned int i;
+    for(i=0;i<passVector.size();i++){
+        if(passVector.at(i)->getpID() == id){
+            passVector.erase(passVector.begin() + i);
+        }
+    }
+    delete temp;
+    cout << "Passenger Deleted." << endl;
+}
+void Passengers::cleanUp(){
+    passVector.clear();
 }
