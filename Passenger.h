@@ -15,8 +15,8 @@ class Passenger{
     void setName(string nm);
     void setPaymentPref(string pprf);
     void setRatingReq(float ratReq);
-    void setHasPets(bool hPets);
-    void setIsHandicap(bool isHandi);
+    void setHasPets(char inVal);
+    void setIsHandicap(char inVal);
     //Getters
     string getName() const {return name;}
     string getPaymentPref() const;
@@ -29,7 +29,7 @@ class Passenger{
     private:
     string name;
     pPref paymentPref;
-    int pID = 100000;
+    int pID;
     float ratingRequirement;
     bool hasPets;
     bool isHandicap;

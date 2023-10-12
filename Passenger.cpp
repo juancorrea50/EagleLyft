@@ -47,10 +47,18 @@ using namespace std;
     void Passenger::setRatingReq(float ratReq){
         ratingRequirement = ratReq;
     }
-    void Passenger::setHasPets(bool hPets){
-        hasPets = hPets;
+    void Passenger::setHasPets(char inVal){
+        if(inVal == 'y' || inVal == 'Y'){
+            hasPets = true;
+        } else if(inVal == 'n' || inVal == 'N'){
+            hasPets = false;
+        }
     }
-    void Passenger::setIsHandicap(bool isHandi){
-        isHandicap = isHandi;
+    void Passenger::setIsHandicap(char inVal){
+        if(inVal == 'y' || inVal == 'Y'){
+            isHandicap = true;
+        } else if(inVal == 'n' || inVal == 'N'){
+            isHandicap = false;
+        }
     }
 

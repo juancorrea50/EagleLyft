@@ -8,6 +8,7 @@ Passengers passengers;
 
 int main(){
     int choice =-1;
+    int editChoice = -1;
     //Will use for input when tasked to delete
     int id = 0;
 
@@ -17,7 +18,7 @@ int main(){
     while(choice == -1 || choice != 0){
         cout << "Welcome to EagleLyft:" << endl;
         cout << "0- Quit 1- Add Driver 2- Add Passenger 3- Add Ride 4- Print Passengers 5- Print Drivers " << endl;
-        cout << "6- Print Rides 7- Delete Passenger 8- Delete Ride 9- Delete Driver" << endl;
+        cout << "6- Print Rides 7- Delete Passenger 8- Delete Ride 9- Delete Driver 10- Edit" << endl;
         cout << "Please choose an option: " << endl;
         cin >> choice;
         
@@ -31,6 +32,24 @@ int main(){
             break;
             case 4:
             passengers.printPassengers();
+            break;
+            case 10:
+                while(editChoice == -1 || editChoice > 3 || editChoice != 0 || editChoice < 0){
+                cout << "Would you like to edit a 1- Passenger 2- driver or 3- ride? (Enter 0 to quit)" << endl;
+                cin >> editChoice;
+                    switch (editChoice){
+                    case 1:
+                        cout << "Enter the id of the passenger you would like to edit" << endl;
+                        cin >> id;
+                        passengers.editPassenger(id);
+                    break;
+                    
+                    default:
+                    
+                    break;
+                    }
+
+                }
             break;
             default:
             cout << "Switch skipped" << endl;

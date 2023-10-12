@@ -22,6 +22,10 @@ class Passengers{
     void loadPassengers();
     //Save Passengers into a data file
     void savePassengers();
+    //Helper function to find a Passenger in the vector
+    Passenger* findPassenger(int id);
+    //Edit function 
+    void editPassenger(int id);
 
     private:
     //Count of all passengers in vector

@@ -138,3 +138,67 @@ void Passengers::savePassengers(){
     //close output file
     fout.close();
 }
+//Edit design to include this function
+Passenger* Passengers::findPassenger(int id){
+    unsigned int i;
+    
+    for(i=0;i<passVector.size();i++){
+        if(passVector.at(i)->getpID() == id){
+            return passVector.at(i);
+            cout << passVector.at(i) << endl;
+        }
+    }
+    cout << "ID not found in passengers."<< endl;
+    
+}
+void Passengers::editPassenger(int id){
+    int choice = -1;
+    string name, payPref;
+    float ratingReq;
+    char hsPets, isHnd;
+    Passenger* temp = findPassenger(id);
+
+
+    while(choice == -1 || choice != 0){
+        cout << "Enter what to edit for Passenger:" << endl;
+        cout << "0-Quit 1- Name 2- Payment Preference 3- Rating Requirements 4- Pets 5- Handicap" << endl;
+        cin >> choice;
+
+        switch (choice){
+            case 0:
+                //Break switch
+            break;
+            case 1:
+            cout << "Enter new name for passenger." << endl;
+            cin >> name;
+            temp->setName(name);
+            break;
+            case 2:
+            cout <<"Enter a new Payment Preference (cash or card)" << endl;
+            cin >> payPref;
+            temp->setPaymentPref(payPref);
+            break;
+            case 3:
+            cout << "Enter a new rating requirement." << endl;
+            cin >> ratingReq;
+            temp->setRatingReq(ratingReq);
+            break;
+            case 4:
+            cout << "Enter a new value for 'has pets'(y or n)." << endl;
+            cin >> hsPets;
+            temp->setHasPets(hsPets);
+            break;
+            case 5:
+            cout << "Enter a new value 'is handicap'(y or n)." << endl;
+            cin >> isHnd;
+            temp->setIsHandicap(isHnd);
+            break;
+            default:
+
+            break;
+        }
+    }
+
+    
+
+}
