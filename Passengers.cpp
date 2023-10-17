@@ -205,6 +205,7 @@ void Passengers::deletePassenger(int id){
     for(i=0;i<passVector.size();i++){
         if(passVector.at(i)->getpID() == id){
             passVector.erase(passVector.begin() + i);
+            decPassCount();
         }
     }
     delete temp;
@@ -212,4 +213,5 @@ void Passengers::deletePassenger(int id){
 }
 void Passengers::cleanUp(){
     passVector.clear();
+    passengerCount = 0;
 }
