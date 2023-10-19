@@ -16,13 +16,20 @@ Driver::Driver(){
     handicapAvail = false;
     allowPets = false;
 }
-Driver::Driver(string nm, string vType, string ntes, int vCap, int drID, float dRating, bool isAvail, bool aPets, bool handAvail){
+Driver::Driver(string nm, string vType, string ntes, int drID, bool isAvail, bool aPets, bool handAvail){
     name = nm;
     vehicleType = vType;
     notes = ntes;
-    vehicleCap = vCap;
+    if(vType == "sedan"){
+        vehicleCap = 4;
+    } else if(vType == "coupe"){
+        vehicleCap = 2;
+    } else if(vType == "suv"){
+        vehicleCap = 5;
+    } else if(vType == "van"){
+        vehicleCap = 8;
+    }
     dID = drID;
-    driverRating = dRating;
     isAvailable = isAvail;
     allowPets = aPets;
     handicapAvail = handAvail;

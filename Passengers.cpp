@@ -212,6 +212,9 @@ void Passengers::deletePassenger(int id){
     cout << "Passenger Deleted." << endl;
 }
 void Passengers::cleanUp(){
+    for(auto it = passVector.begin(); it!= passVector.end(); ++it){
+        delete *it;
+    }
     passVector.clear();
     passengerCount = 0;
 }
