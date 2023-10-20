@@ -84,12 +84,13 @@ void Passengers::printPassengers(){
         iHandi = (passVector.at(i)->getIsHandicap() == true) ? 'Y' : 'N';
         hPets = (passVector.at(i)->getHasPets() == true) ? 'Y' : 'N';
         
+        cout <<"Passengers:  "<<endl;
         cout << "Name: " << passVector.at(i)->getName() << endl;
-        cout << "ID: " << passVector.at(i)->getpID() << endl;
+        cout << "ID: (P)" << passVector.at(i)->getpID() << endl;
         cout << "Payment Preference: " << passVector.at(i)->getPaymentPref() << endl;
         cout << "Rating Requirement: " << passVector.at(i)->getRatingRequirement() << endl;
         cout << "Handicap: " << iHandi << endl;
-        cout << "Pets: " << hPets<< endl;
+        cout << "Pets: " << hPets<< endl << endl;
     }
 }
 //Load passengers from file

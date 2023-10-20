@@ -86,8 +86,9 @@ void Drivers::printDrivers(){
         iHandi = (driverVect.at(i)->getHandicapAvail() == true) ? 'Y' : 'N';
         hPets = (driverVect.at(i)->getAllowPets() == true) ? 'Y' : 'N';
         
+        cout <<"Drivers: " <<endl;
         cout << "Name: " << driverVect.at(i)->getName() << endl;
-        cout << "ID: " << driverVect.at(i)->getdID() << endl;
+        cout << "ID: (D)" << driverVect.at(i)->getdID() << endl;
         cout << "Vehicle Type: " << driverVect.at(i)->getVehicleType() << endl;
         cout << "With a cap of: " << driverVect.at(i)->getVehicleCap() << endl;
         cout << "Is Available: " << isAv << endl;
