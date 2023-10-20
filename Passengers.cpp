@@ -104,7 +104,7 @@ void Passengers::loadPassengers(){
     int id;
     
     //Open data file named passengers.dat
-    fin.open("passengers.dat");
+    fin.open("Passengers.dat");
     //Input for passenger count fin.ignore() ignores the newline
     fin >> passengerCount; fin.ignore();
     //Input and push loaded data into the vector
@@ -124,7 +124,7 @@ void Passengers::loadPassengers(){
 void Passengers::savePassengers(){
     ofstream fout;
     //Save passengerCount into the file
-    fout.open("passengers.dat");
+    fout.open("Passengers.dat");
     fout << passengerCount << endl;
     Passenger* temp;
 

@@ -16,7 +16,7 @@ Driver::Driver(){
     handicapAvail = false;
     allowPets = false;
 }
-Driver::Driver(string nm, string vType, string ntes, int drID, bool isAvail, bool aPets, bool handAvail){
+Driver::Driver(string nm, string vType, string ntes, unsigned long int drID, bool isAvail, bool aPets, bool handAvail){
     name = nm;
     vehicleType = vType;
     notes = ntes;

@@ -59,7 +59,7 @@ void Drivers::addDriver(){
 
     cout << "Do you have pets for your trips? (y/n)" << endl;
     cin >> aPets;
-        
+    cin.ignore();
     if((char)tolower(aPets) == 'y'){
         allowPets = true;
     } else if((char)tolower(aPets) == 'n'){
@@ -67,7 +67,7 @@ void Drivers::addDriver(){
     }
     cout << "Enter any notes about the driver: " << endl;
     getline(cin, notes);
-    cin.ignore();
+    //cin.ignore();
 
     //Increment Passenger count
     incDriverCount();
@@ -89,11 +89,12 @@ void Drivers::printDrivers(){
         cout << "Name: " << driverVect.at(i)->getName() << endl;
         cout << "ID: " << driverVect.at(i)->getdID() << endl;
         cout << "Vehicle Type: " << driverVect.at(i)->getVehicleType() << endl;
-        cout << "With a cap of " << driverVect.at(i)->getVehicleCap() << endl;
+        cout << "With a cap of: " << driverVect.at(i)->getVehicleCap() << endl;
         cout << "Is Available: " << isAv << endl;
         cout << "Handicap Capable: " << iHandi << endl;
         cout << "Allows Pets: " << hPets<< endl;
         cout << "Notes: " << driverVect.at(i)->getNotes() << endl;
+        cout << endl;
     }
 }
 //Load Drivers from file
@@ -103,8 +104,8 @@ void Drivers::loadDrivers(){
     string nm, vType, notes;
     float driverRating;
     bool isAvail, allowHandicap, allowPets;
-    char isAv,aHandi, aPets;
-    int id;
+    //char isAv,aHandi, aPets;
+    unsigned long int id;
     
     //Open data file named Drivers.dat
     fin.open("Drivers.dat");
@@ -112,8 +113,11 @@ void Drivers::loadDrivers(){
     fin >> driverCount; fin.ignore();
     //Input and push loaded data into the vector
     for(int i=0;i<driverCount;i++){
-        fin >> nm >> vType >> notes >>id >> isAv >> aPets>> aHandi;
-        driverVect.push_back(new Driver(nm,vType,notes,id,isAv,aPets,aHandi));
+        fin >> nm >> vType;
+        fin.ignore(); getline(fin,notes);
+        fin >> id;
+        fin >> isAvail >> allowPets>> allowHandicap;
+        driverVect.push_back(new Driver(nm,vType,notes,id,isAvail,allowPets,allowHandicap));
     }
     //Close file
     fin.close();
@@ -130,7 +134,7 @@ void Drivers::saveDrivers(){
         //temp becomes the passenger pointer that it points to
         temp = *it;
         //Saves all the variable data in order of object instanciation
-        fout << temp->getName() <<" "<< temp->getVehicleType()<< " " << temp->getNotes()<< " " << temp->getdID()<< " " << temp->getIsAvailable()<< " " << temp->getAllowPets()<< temp->getHandicapAvail() << "\n";
+        fout << temp->getName() << " " << temp->getVehicleType()<< "\n" << temp->getNotes()<< "\n" << temp->getdID()<< "\n" << temp->getIsAvailable()<< " " << temp->getAllowPets() << " "<< temp->getHandicapAvail() << "\n";
     }
     //close output file
     fout.close();
@@ -212,7 +216,7 @@ void Drivers::deleteDriver(int id){
         }
     }
     delete temp;
-    cout << "Passenger Deleted." << endl;
+    cout << "Driver Deleted." << endl << endl;
 }
 void Drivers::cleanUp(){
     for(auto it = driverVect.begin(); it!= driverVect.end(); ++it){

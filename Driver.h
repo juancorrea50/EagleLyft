@@ -9,7 +9,7 @@ class Driver{
     //Default Contructor
     Driver();
     //Param Constructor
-    Driver(string nm, string vType, string ntes, int drID, bool isAvail, bool aPets, bool handAvail);
+    Driver(string nm, string vType, string ntes, unsigned long int drID, bool isAvail, bool aPets, bool handAvail);
     //Setters
     void setName(string nm);
     void setVehicleType(string vType);
@@ -38,7 +38,7 @@ class Driver{
     string vehicleType;
     string notes;
     int vehicleCap;
-    int dID;
+    unsigned long int dID;
     float driverRating;
     bool isAvailable;
     bool allowPets;

@@ -15,7 +15,7 @@ class Drivers{
     void decDriverCount(){driverCount--;}
     //Add Passenger 1st prio testing
     void addDriver();
-    //Print passVector
+    //Print driver vector
     void printDrivers();
     //Load in Passengers data file
     void loadDrivers();
