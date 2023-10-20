@@ -161,7 +161,7 @@ void Passengers::editPassenger(int id){
 
     while(choice == -1 || choice != 0){
         cout << "Enter what to edit for Passenger:" << endl;
-        cout << "0-Quit 1- Name 2- Payment Preference 3- Rating Requirements 4- Pets 5- Handicap" << endl;
+        cout << "0- Back 1- Name 2- Payment Preference 3- Rating Requirements 4- Pets 5- Handicap" << endl;
         cin >> choice;
 
         switch (choice){

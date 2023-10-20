@@ -149,7 +149,6 @@ Driver* Drivers::findDriver(int id){
             temp = driverVect.at(i);
         }
     }
-
     return temp;
 }
 void Drivers::editDriver(int id){
@@ -163,7 +162,7 @@ void Drivers::editDriver(int id){
 
     while(choice == -1 || choice != 0){
         cout << "Enter what to edit for Passenger:" << endl;
-        cout << "0-Quit 1- Name 2- Vehicle Type 3- Notes 4- Available 5- Allow Pets 6- Handicap Available " << endl;
+        cout << "0- Back 1- Name 2- Vehicle Type 3- Notes 4- Available 5- Allow Pets 6- Handicap Available " << endl;
         cin >> choice;
 
         switch (choice){
@@ -171,32 +170,33 @@ void Drivers::editDriver(int id){
                 //Break switch
             break;
             case 1:
-            cout << "Enter new name for passenger." << endl;
+            cout << "Enter new name for driver." << endl;
             cin >> nm;
             temp->setName(nm);
             break;
             case 2:
-            cout <<"Enter a new Payment Preference (cash or card)" << endl;
+            cout <<"Enter a new Vehicle Type (suv, sedan, coupe)" << endl;
             cin >> vType;
             temp->setVehicleType(vType);
             break;
             case 3:
-            cout << "Enter a new rating requirement." << endl;
-            cin >> notes;
+            cout << "Enter new notes (will replace old notes)" << endl;
+            cin.ignore();
+            getline(cin, notes);
             temp->setNotes(notes);
             break;
             case 4:
-            cout << "Are you still available(y or n)?" << endl;
+            cout << "Are you still available(y/n)?" << endl;
             cin >> isAv;
             temp->setIsAvailable(isAv);
             break;
             case 5:
-            cout << "Are pets still allowed (y or n)?" << endl;
+            cout << "Are pets still allowed (y/n)?" << endl;
             cin >> aPets;
             temp->setAllowPets(aPets);
             break;
             case 6:
-            cout << "Is your vehicle still handicap capable(y or n)?" << endl;
+            cout << "Is your vehicle still handicap capable(y/n)?" << endl;
             cin >> aHandi;
             temp->setHandicapAvail(aHandi);
             break;

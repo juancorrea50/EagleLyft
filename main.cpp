@@ -60,7 +60,7 @@ int main(){
             case 10:
             //Edit one of the 3 choices
                 while(secondChoice == -1 || secondChoice > 3 || secondChoice != 0 || secondChoice < 0){
-                cout << "Would you like to edit a 1- Passenger 2- driver or 3- ride? (Enter 0 to quit)" << endl;
+                cout << "0- Back 1- Passenger 2- driver or 3- ride" << endl;
                 cin >> secondChoice;
                     switch (secondChoice){
                     case 1:
