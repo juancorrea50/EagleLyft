@@ -63,6 +63,7 @@ void Rides::addRide(Passenger* pObj, Driver* dObj){
         cin.ignore();
         getline(cin,pLoc);
         int convHr;
+        string amPm = "AM";
 
         incRideCount();
         temp = new Ride(pLoc,rStat,(rideCount + 100000), pCount);
@@ -71,8 +72,9 @@ void Rides::addRide(Passenger* pObj, Driver* dObj){
         temp->setPickUpTime(temp->setTimeVal());
         if((temp->getPickUpTime()).tm_hour > 12){
             convHr = (temp->getPickUpTime()).tm_hour - 12;
+            amPm = "PM";
         }
-        cout << convHr << ":" << (temp->getPickUpTime()).tm_min << endl;
+        cout << convHr << ":" << (temp->getPickUpTime()).tm_min << amPm << endl;
 
         ridesVect.push_back(temp);
     } else{
