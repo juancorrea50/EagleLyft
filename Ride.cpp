@@ -15,10 +15,8 @@ Ride::Ride(string pLoc, string rStat, int rID, int pSize){
     rideStatus = rStat;
     rideID = rID;
     partySize = pSize;
-    //dropOffLocation = dLoc;
-    //custRating = cRating;
-    //pickUpTime = pUpTime;
-    //dropOffTime = dOffTime;
+    dropOffLocation = " ";
+    custRating = 0.00;
 }
 //Setters
 void Ride::setPickUpLocation(string pLoc){
@@ -36,18 +34,17 @@ void Ride::setPartySize(int pSize){
 void Ride::setCustRating(float cRating){
     custRating = cRating;
 }
-
-//Setters for time values
-void Ride::setPickUpTime(){
+//Helper function to set time
+struct tm Ride::setTimeVal(){
     time_t now = time(NULL);
     struct tm nowLocal = *localtime(&now);
-
-    pickUpTime = nowLocal;
+    return nowLocal;
 }
-void Ride::setDropOffTime(){
-    time_t now = time(NULL);
-    struct tm nowLocal = *localtime(&now);
-
-    dropOffTime = nowLocal;
+//Setters for time values
+void Ride::setPickUpTime(struct tm nLocal){
+    pickUpTime = nLocal;
+}
+void Ride::setDropOffTime(struct tm nLocal){
+    dropOffTime = nLocal;
 }
 

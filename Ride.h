@@ -20,8 +20,8 @@ class Ride{
     //Returns a tm struct that contains the current time and date
     struct tm setTimeVal();
     //Functions are setters of current time for pick up and drop off times
-    void setPickUpTime();
-    void setDropOffTime();
+    void setPickUpTime(struct tm nLocal);
+    void setDropOffTime(struct tm nLocal);
     //Getters
     string getPickUpLocation(){return pickUpLocation;}
     string getDropOffLocation(){return dropOffLocation;}
