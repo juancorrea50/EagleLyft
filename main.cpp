@@ -52,6 +52,9 @@ int main(){
             case 5:
             drivers.printDrivers();
             break;
+            case 6:
+            rides.printRides();
+            break;
             case 7:
             //Delete passenger
             cout << "Enter id to delete passenger" << endl;

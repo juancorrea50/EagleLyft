@@ -8,7 +8,8 @@ using namespace std;
 class Ride{
     public:
     Ride();
-    Ride(string pLoc, string dLoc, string rStat, int rID, int pSize, float cRating, struct tm pUpTime, struct tm dOffTime);
+    Ride(string pLoc, string rStat, int rID, int pSize);
+    //Drop off location, drop off time, and customer rating will be set on drop off
     //Setters
     void setPickUpLocation(string pLoc);
     void setDropOffLocation(string dLoc);

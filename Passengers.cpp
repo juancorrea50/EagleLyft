@@ -14,9 +14,8 @@ Passengers::Passengers(){
 Passengers::Passengers(vector<Passenger*> pVect){
     passVector = pVect;
 }
-int Passengers::incPassCount(){
+void Passengers::incPassCount(){
     passengerCount++;
-    return passengerCount;
 }
 
 //Add Passenger to vector
@@ -84,7 +83,7 @@ void Passengers::printPassengers(){
         iHandi = (passVector.at(i)->getIsHandicap() == true) ? 'Y' : 'N';
         hPets = (passVector.at(i)->getHasPets() == true) ? 'Y' : 'N';
         
-        cout <<"Passengers:  "<<endl;
+        cout <<"Passenger:  "<<endl;
         cout << "Name: " << passVector.at(i)->getName() << endl;
         cout << "ID: (P)" << passVector.at(i)->getpID() << endl;
         cout << "Payment Preference: " << passVector.at(i)->getPaymentPref() << endl;

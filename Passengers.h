@@ -11,7 +11,7 @@ class Passengers{
     Passengers();
     Passengers(vector<Passenger*> pVect);
     //Increment passenger ID
-    int incPassCount();
+    void incPassCount();
     //Decrement pass count
     void decPassCount(){passengerCount--;}
     //Add Passenger 1st prio testing
