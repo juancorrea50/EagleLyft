@@ -33,6 +33,7 @@ Driver::Driver(string nm, string vType, string ntes, unsigned long int drID, boo
     isAvailable = isAvail;
     allowPets = aPets;
     handicapAvail = handAvail;
+    driverRating = 5.00;
 }
 //Setters
 void Driver::setName(string nm){

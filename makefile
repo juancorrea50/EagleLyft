@@ -1,5 +1,5 @@
-main: Passenger.o Passengers.o Driver.o Drivers.o Ride.o main.o
-	g++ Passenger.cpp Passengers.cpp Driver.cpp Drivers.cpp Ride.cpp main.cpp -o main
+main: Passenger.o Passengers.o Driver.o Drivers.o Ride.o Rides.o main.o
+	g++ Passenger.cpp Passengers.cpp Driver.cpp Drivers.cpp Ride.cpp Rides.cpp main.cpp -o main
 
 Passenger.o: Passenger.cpp
 	g++ -c Passenger.cpp
@@ -15,6 +15,8 @@ Drivers.o: Drivers.cpp
 
 Ride.o: Ride.cpp
 	g++ -c Ride.cpp
+Rides.o: Rides.cpp
+	g++ -c Rides.cpp
 
 clean:
 	rm *.o main
