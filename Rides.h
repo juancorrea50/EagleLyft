@@ -15,17 +15,18 @@ class Rides{
     void addRide(Passenger* pObj, Driver* dObj);
     //Helper functions for addRide and
     bool compBool(Passenger* pObj, Driver* dObj, int pCount);
-    void checkComplete();
+    struct tm getCurrentTime();
+    void completeRide();
     //Increment and decrement functions
     void incRideCount();
     void decRideCount();
     //Remainder functions for utility
     void printRides();
-    void loadRides();
+    void loadRides(vector<Passenger*>pVect,vector<Driver*> dVect);
     void saveRides();
-    void findRide();
-    void editRide();
-    void cancelRide();
+    Ride* findRide(int id);
+    void editRide(int id);
+    void cancelRide(int id);
     void cleanUp();
 
     private:

@@ -19,6 +19,34 @@ void Rides::incRideCount(){
 void Rides::decRideCount(){
     rideCount--;
 }
+//Current time to display on menu
+struct tm Rides::getCurrentTime(){
+    time_t now = time(NULL);
+    struct tm nowLocal = *localtime(&now);
+    
+    return nowLocal;
+}
+//Complete rides if an hour(assumed value) has passed
+void Rides::completeRide(){
+    struct tm nowLocal = getCurrentTime();
+    char ct[80];
+    strftime(ct,80,"%m-%d-%y %I:%M%p", &nowLocal);
+    cout << endl;
+    cout <<"Current time: "<< ct << endl;
+    cout << endl;
+    for(auto it = ridesVect.begin();it!=ridesVect.end();++it){
+
+        if(((*it)->getPickUpHr()+1) == getCurrentTime().tm_hour){
+            (*it)->setRideStatus("Completed");
+            ((*it)->getDriver())->setIsAvailable(true);
+            cout << ((*it)->getDriver())->getName() << " is now available!" << endl;
+        } else {
+            cout << ((*it)->getDriver())->getName() << " is not available for rides at the moment" << endl;
+        }
+    }
+
+     
+}
 //Helper function to check boolean values from both Passenger and Driver 
 bool Rides::compBool(Passenger* pObj, Driver* dObj, int pCount){
     bool returnVal;
@@ -43,9 +71,8 @@ bool Rides::compBool(Passenger* pObj, Driver* dObj, int pCount){
 
 }
 void Rides::addRide(Passenger* pObj, Driver* dObj){
-    
     Ride* temp;
-    string pLoc;
+    string pLoc,dLoc;
     string rStat = "Active";
     int pCount;
 
@@ -57,21 +84,24 @@ void Rides::addRide(Passenger* pObj, Driver* dObj){
     if(hasPassedCheck == true){
         //Instantiate object with pickup location, time, pCount, and rStat
         cout << "Enter the pickup location." << endl;
-        cin.ignore();
-        getline(cin,pLoc);
+        cin.ignore(); getline(cin,pLoc);
+        cout << "Enter the drop off location. " << endl;
+        getline(cin,dLoc);
 
         incRideCount();
-        temp = new Ride(pLoc,rStat,(rideCount + 100000), pCount);
+        temp = new Ride(pLoc,dLoc,rStat,(rideCount + 100000), pCount);
+        temp->setDriver(dObj);
+        temp->setPassenger(pObj);
         
         cout << "Ride pickup time is: " << endl;
         temp->setPickUpTime(temp->setTimeVal());
         
         cout <<(temp->getPickUpTime())<< endl;
 
+        //Change drivers isavailable to false
+        temp->getDriver()->setIsAvailable(false);
+        //Push the temp into the rides vector
         ridesVect.push_back(temp);
-        /*Save this code until load and save are implemented
-            //Change driver's isAvailable var to false;
-        */
     } else{
         cout << "Ride cannot be created" << endl;
     }
@@ -79,25 +109,83 @@ void Rides::addRide(Passenger* pObj, Driver* dObj){
 void Rides::printRides(){
     for(auto it = ridesVect.begin(); it != ridesVect.end(); ++it){
         cout << "Ride: " << endl;
-        cout << "Ride ID: " << (*it)->getRideID() << endl;
-        cout << "Ride Status: (R)" << (*it)->getRideStatus() << endl;
+        cout << "Ride ID: (R)" << (*it)->getRideID() << endl;
+        cout << "Ride Status: " << (*it)->getRideStatus() << endl;
         cout << "Party Size: " << (*it)->getPartySize()<< endl;
         cout << "Pick up Location: " << (*it)->getPickUpLocation()<< endl;
+        cout << "Drop off Location: " << (*it)->getDropOffLocation() << endl;
         cout << "Pick up Time and Date: " << (*it)->getPickUpTime()<< endl;
         cout << "Drop off Time and Date: " <<(*it)->getDropOffTime()<< endl << endl;
     }
 }
+Ride* Rides::findRide(int id){
+    Ride* temp;
+    
+    for(auto it =ridesVect.begin();it!=ridesVect.end();++it){
+        if((*it)->getRideID() == id){
+            temp = *it;
+        }
+    }
+    return temp;
+}
+void Rides::editRide(int id){
+    int choice = -1;
+    string pLoc, dLoc;
+    Ride* temp = findRide(id);
+
+    while(choice == -1 || choice != 0){
+        cout << "Enter what to edit for Passenger:" << endl;
+        cout << "0- Back 1- Pick up Location 2- Drop off Location" << endl;
+        cin >> choice;
+
+        switch (choice){
+            case 0:
+                //Break switch
+            break;
+            case 1:
+            cout << "Enter new name for passenger." << endl;
+            cin >> pLoc;
+            temp->setPickUpLocation(pLoc);
+            break;
+            case 2:
+            cout <<"Enter a new Payment Preference (cash or card)" << endl;
+            cin >> dLoc;
+            temp->setDropOffLocation(dLoc);
+            break;
+            default:
+
+            break;
+        }
+    }
+}
+void Rides::cancelRide(int id){
+    Ride* temp = findRide(id);
+    unsigned int i;
+
+    for(i=0;i<ridesVect.size();i++){
+        if((ridesVect.at(i))->getRideID() == id){
+            (ridesVect.at(i))->getDriver()->setIsAvailable(true);
+            (ridesVect.at(i))->setRideStatus("Cancelled");
+            ridesVect.erase(ridesVect.begin() + i);
+            decRideCount();
+        }
+    }
+    delete temp;
+    cout << "Ride Cancelled." << endl;
+}
 
 //Load Rides from file
-void Rides::loadRides(){
+void Rides::loadRides(vector<Passenger*>pVect,vector<Driver*> dVect){
     ifstream fin;
     //Variables to fin
     string pLoc, dLoc, rStat;
     float cRating;
     bool isAvail, allowHandicap, allowPets;
-    int rId, pSize;
-
+    int rId, pSize, dId, pId;
     string pTime, dTime;
+    //Create passengers and drivers objects with input vectors
+    Passengers pObj(pVect);
+    Drivers dObj(dVect);
     
     //Open data file named Drivers.dat
     fin.open("Rides.dat");
@@ -105,12 +193,17 @@ void Rides::loadRides(){
     fin >> rideCount; fin.ignore();
     //Input and push loaded data into the vector
     for(int i=0;i<rideCount;i++){
-        fin.ignore(); getline(fin,pLoc);
-        fin.ignore(); getline(fin,dLoc);
-        fin >>cRating>> rStat >> rId;
+        getline(fin,pLoc);
+        getline(fin,dLoc);
+        fin >>cRating>> rStat >> rId >> pSize;
         fin.ignore(); getline(fin, pTime);
-        fin.ignore(); getline(fin, dTime);
-        ridesVect.push_back(new Ride(pLoc,rStat,rId,pSize, pTime, dTime));
+        getline(fin, dTime);
+        fin >> dId >> pId; fin.ignore();
+        //Pushes new ride object pointer into the rides vector
+        Ride* rTemp = new Ride(pLoc,rStat,rId,pSize, pTime, dTime);
+        rTemp->setDriver(dObj.findDriver(dId));
+        rTemp->setPassenger(pObj.findPassenger(pId));
+        ridesVect.push_back(rTemp);
     }
     //Close file
     fin.close();
@@ -127,7 +220,8 @@ void Rides::saveRides(){
         //temp becomes the passenger pointer that it points to
         temp = *it;
         //Saves all the variable data in order of object instanciation
-        fout << temp->getPickUpLocation() << "\n" << temp->getDropOffLocation()<< "\n" << temp->getCustRating()<< " " << temp->getRideStatus()<< " " << temp->getRideID() << "\n"<< temp->getPickUpTime() << "\n" << temp->getDropOffTime() << endl;
+        fout <<temp->getPickUpLocation() << "\n" << temp->getDropOffLocation()<< "\n" << temp->getCustRating()<< " " << temp->getRideStatus()<< " " << temp->getRideID()<< " " << temp->getPartySize()<< "\n"<< temp->getPickUpTime() << "\n" << temp->getDropOffTime() << "\n";
+        fout <<(temp->getDriver())->getdID()<< " " <<(temp->getPassenger())->getpID() << endl;
     }
     //close output file
     fout.close();

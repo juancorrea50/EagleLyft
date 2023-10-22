@@ -29,6 +29,8 @@ class Drivers{
     void deleteDriver(int id);
     //Memory Cleanup
     void cleanUp();
+    //Get Driver Vector
+    vector<Driver*> getDriverVect(){return driverVect;}
     private:
     int driverCount;
     vector<Driver *> driverVect;

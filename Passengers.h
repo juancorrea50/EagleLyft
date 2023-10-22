@@ -30,6 +30,8 @@ class Passengers{
     void deletePassenger(int id);
     //Memory Cleanup
     void cleanUp();
+    //Get passVector
+    vector<Passenger*> getPassVect(){return passVector;}
 
     private:
     //Count of all passengers in vector
