@@ -168,6 +168,7 @@ void Rides::cancelRide(int id){
             (ridesVect.at(i))->setRideStatus("Cancelled");
             ridesVect.erase(ridesVect.begin() + i);
             decRideCount();
+            //Consider a vector of cancelled rides
         }
     }
     delete temp;
