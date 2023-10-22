@@ -20,10 +20,12 @@ int main(){
     passengers.loadPassengers();
     drivers.loadDrivers();
     rides.loadRides(passengers.getPassVect(),drivers.getDriverVect());
-
+    
+    rides.completeRide();
+    
     while(choice == -1 || choice != 0){
         cout << "Welcome to EagleLyft:" << endl;
-        rides.completeRide();
+
         cout << endl;
         cout << "0- Quit 1- Add Driver 2- Add Passenger 3- Create Ride 4- Print Passengers 5- Print Drivers " << endl;
         cout << "6- Print Rides 7- Delete Passenger 8- Cancel Ride 9- Delete Driver 10- Edit" << endl;
@@ -47,7 +49,7 @@ int main(){
             cout << "Please enter the requested Driver's ID" << endl;
             cin >> id2;
             
-            rides.addRide(passengers.findPassenger(id),drivers.findDriver(id2));
+            rides.createRide(passengers.findPassenger(id),drivers.findDriver(id2));
             break;
             case 4:
             //Print passenger vector

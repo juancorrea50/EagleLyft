@@ -43,6 +43,7 @@ class Driver{
     bool isAvailable;
     bool allowPets;
     bool handicapAvail;
+    int rideCount;
 
 };
 

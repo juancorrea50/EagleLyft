@@ -12,7 +12,7 @@ class Rides{
     Rides();
     Rides(int rCount, vector<Ride*> rVect);
     //Collection Functions
-    void addRide(Passenger* pObj, Driver* dObj);
+    void createRide(Passenger* pObj, Driver* dObj);
     //Helper functions for addRide and
     bool compBool(Passenger* pObj, Driver* dObj, int pCount);
     struct tm getCurrentTime();

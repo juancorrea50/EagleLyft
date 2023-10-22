@@ -34,6 +34,7 @@ Driver::Driver(string nm, string vType, string ntes, unsigned long int drID, boo
     allowPets = aPets;
     handicapAvail = handAvail;
     driverRating = 5.00;
+    rideCount = 1;
 }
 //Setters
 void Driver::setName(string nm){
@@ -49,7 +50,8 @@ void Driver::setVehicleCap(int vCap){
     vehicleCap = vCap;
 }
 void Driver::setDriverRating(float dRating){
-    driverRating = dRating;
+    driverRating = (driverRating + dRating)/rideCount;
+    rideCount++;
 }
 void Driver::setIsAvailable(char inVal){
     if(inVal == 'y' || inVal == 'Y'){
