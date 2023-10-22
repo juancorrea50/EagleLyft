@@ -22,6 +22,7 @@ class Rides{
     void decRideCount();
     //Remainder functions for utility
     void printRides();
+    void printRidesByDriver(int id);
     void loadRides(vector<Passenger*>pVect,vector<Driver*> dVect);
     void saveRides();
     Ride* findRide(int id);

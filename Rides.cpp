@@ -48,7 +48,7 @@ void Rides::completeRide(){
             ((*it)->getDriver())->setIsAvailable('y');
             (*it)->setDropOffTime(getCurrentTime());
             //Enter a rating for the ride
-            cout << "Please enter a rating for the ride.(0-5 decimals can be used)" << endl;
+            cout << "Please enter a rating for the ride.(0-5)(decimals can be used)" << endl;
             cin >> ratingInp;
             (*it)->getDriver()->setDriverRating(ratingInp);
             //Print that a driver is now available
@@ -205,6 +205,22 @@ void Rides::printRides(){
         }
     }
 }
+void Rides::printRidesByDriver(int id){
+    for(auto it = ridesVect.begin(); it != ridesVect.end(); ++it){
+        if((*it)->getDriver()->getdID() == id){
+            cout << "Ride: " << endl;
+            cout << "Ride ID: (R)" << (*it)->getRideID() << endl;
+            cout << "Ride Status: " << (*it)->getRideStatus() << endl;
+            cout << "Party Size: " << (*it)->getPartySize()<< endl;
+            cout << "Pick up Location: " << (*it)->getPickUpLocation()<< endl;
+            cout << "Drop off Location: " << (*it)->getDropOffLocation() << endl;
+            cout << "Pick up Time and Date: " << (*it)->getPickUpTime()<< endl;
+            cout << "Drop off Time and Date: " <<(*it)->getDropOffTime()<< endl << endl;
+
+        }
+
+    }
+}
 Ride* Rides::findRide(int id){
     Ride* temp;
     
@@ -231,12 +247,12 @@ void Rides::editRide(int id){
             break;
             case 1:
             cout << "Enter new pickup location for Ride." << endl;
-            cin >> pLoc;
+            getline(cin,pLoc);
             temp->setPickUpLocation(pLoc);
             break;
             case 2:
             cout <<"Enter a new drop off location" << endl;
-            cin >> dLoc;
+            cin.ignore();getline(cin, dLoc);
             temp->setDropOffLocation(dLoc);
             break;
             default:
@@ -252,9 +268,6 @@ void Rides::cancelRide(int id){
         if((ridesVect.at(i))->getRideID() == id){
             (ridesVect.at(i))->getDriver()->setIsAvailable('y');
             (ridesVect.at(i))->setRideStatus("Cancelled");
-            //ridesVect.erase(ridesVect.begin() + i);
-            //decRideCount();
-            //Consider a vector of cancelled rides
         }
     }
     cout << "Ride Cancelled." << endl;
