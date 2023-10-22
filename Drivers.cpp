@@ -105,7 +105,6 @@ void Drivers::loadDrivers(){
     string nm, vType, notes;
     float driverRating;
     bool isAvail, allowHandicap, allowPets;
-    //char isAv,aHandi, aPets;
     unsigned long int id;
     
     //Open data file named Drivers.dat

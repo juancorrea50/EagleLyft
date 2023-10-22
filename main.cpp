@@ -19,11 +19,12 @@ int main(){
     //Load files
     passengers.loadPassengers();
     drivers.loadDrivers();
+    rides.loadRides();
 
     while(choice == -1 || choice != 0){
         cout << "Welcome to EagleLyft:" << endl;
         cout << "0- Quit 1- Add Driver 2- Add Passenger 3- Create Ride 4- Print Passengers 5- Print Drivers " << endl;
-        cout << "6- Print Rides 7- Delete Passenger 8- Delete Ride 9- Delete Driver 10- Edit" << endl;
+        cout << "6- Print Rides 7- Delete Passenger 8- Cancel Ride 9- Delete Driver 10- Edit" << endl;
         cout << "Please choose an option: " << endl;
         cin >> choice;
         
@@ -62,6 +63,7 @@ int main(){
             passengers.deletePassenger(id);
             break;
             case 8:
+            //rides.cancelRide(rides.findRide())
 
             break;
             case 9:
@@ -101,10 +103,13 @@ int main(){
         }
 
     }
+    //Save functions
     passengers.savePassengers();
     passengers.cleanUp();
     drivers.saveDrivers();
     drivers.cleanUp();
+    rides.saveRides();
+    rides.cleanUp();
 
     return 0;
 }

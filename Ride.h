@@ -9,6 +9,7 @@ class Ride{
     public:
     Ride();
     Ride(string pLoc, string rStat, int rID, int pSize);
+    Ride(string pLoc, string rStat, int rID, int pSize, string pTime, string dTime);
     //Drop off location, drop off time, and customer rating will be set on drop off
     //Setters
     void setPickUpLocation(string pLoc);
@@ -29,15 +30,15 @@ class Ride{
     int getRideID(){return rideID;}
     int getPartySize(){return partySize;}
     float getCustRating(){return custRating;}
-    struct tm getPickUpTime(){return pickUpTime;}
-    struct tm getDropOffTime(){return dropOffTime;}
+    string getPickUpTime(){return pickUpTime;}
+    string getDropOffTime(){return dropOffTime;}
 
     private:
     string pickUpLocation, dropOffLocation, rideStatus;    
     int rideID, partySize;
     float custRating;
-    struct tm pickUpTime;
-    struct tm dropOffTime;
+    string pickUpTime;
+    string dropOffTime;
 };
 
 #endif
