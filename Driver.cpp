@@ -16,7 +16,7 @@ Driver::Driver(){
     handicapAvail = false;
     allowPets = false;
 }
-Driver::Driver(string nm, string vType, string ntes, unsigned long int drID, bool isAvail, bool aPets, bool handAvail){
+Driver::Driver(string nm, string vType, string ntes, int drID, bool isAvail, bool aPets, bool handAvail, float dRating){
     name = nm;
     vehicleType = vType;
     notes = ntes;
@@ -33,8 +33,8 @@ Driver::Driver(string nm, string vType, string ntes, unsigned long int drID, boo
     isAvailable = isAvail;
     allowPets = aPets;
     handicapAvail = handAvail;
-    driverRating = 5.00;
-    rideCount = 1;
+    driverRating = dRating;
+    rideCount++;
 }
 //Setters
 void Driver::setName(string nm){

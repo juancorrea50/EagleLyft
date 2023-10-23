@@ -41,7 +41,7 @@ void Rides::completeRide(){
         //Check if more than an hour has passed (assumed value is an hour per ride)
         if(((((*it)->getPickUpHr()+1) > getCurrentTime().tm_hour && (*it)->getPickUpDay() < getCurrentTime().tm_mday)
         || (((*it)->getPickUpHr()+1) < getCurrentTime().tm_hour && (*it)->getPickUpDay() == getCurrentTime().tm_mday)) 
-        && ((*it)->getRideStatus() != "Completed")){
+        && ((*it)->getRideStatus() == "Active")){
             //Make changes to ride and driver status
             (*it)->setRideStatus("Completed");
             //setisAvailable takes in a char
@@ -231,6 +231,7 @@ Ride* Rides::findRide(int id){
     }
     return temp;
 }
+//Edit Ride by changing the pickup and drop off location
 void Rides::editRide(int id){
     int choice = -1;
     string pLoc, dLoc;
@@ -262,15 +263,11 @@ void Rides::editRide(int id){
     }
 }
 void Rides::cancelRide(int id){
-    unsigned int i;
+    Ride* temp = findRide(id);
 
-    for(i=0;i<ridesVect.size();i++){
-        if((ridesVect.at(i))->getRideID() == id){
-            (ridesVect.at(i))->getDriver()->setIsAvailable('y');
-            (ridesVect.at(i))->setRideStatus("Cancelled");
-        }
-    }
-    cout << "Ride Cancelled." << endl;
+    temp->setRideStatus("Cancelled");
+    temp->getDriver()->setIsAvailable('y');
+    cout << "Ride has been Cancelled."<< endl;
 }
 
 //Load Rides from file

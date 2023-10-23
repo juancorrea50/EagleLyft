@@ -72,8 +72,8 @@ void Drivers::addDriver(){
     //Increment Passenger count
     incDriverCount();
     
-    //Create temp object in memory and push a new object pointer that uses driverCount+100000 to create a unique ID number for driver's ID
-    temp = new Driver(nm, vType, notes,(driverCount+100000), isAvail, allowPets, allowHandicap);
+    //Create temp object in memory and push a new object pointer that uses driverCount+100000 to create a unique ID number for driver's ID and Base value for driver rating is 5.00
+    temp = new Driver(nm, vType, notes,(driverCount+100000), isAvail, allowPets, allowHandicap, 5.00);
     driverVect.push_back(temp);
 }
 //Print Drivers Vector
@@ -89,6 +89,7 @@ void Drivers::printDrivers(){
         cout <<"Driver: " <<endl;
         cout << "Name: " << driverVect.at(i)->getName() << endl;
         cout << "ID: (D)" << driverVect.at(i)->getdID() << endl;
+        cout << "Rating: " << driverVect.at(i)->getDriverRating() << endl;
         cout << "Vehicle Type: " << driverVect.at(i)->getVehicleType() << endl;
         cout << "With a cap of: " << driverVect.at(i)->getVehicleCap() << endl;
         cout << "Is Available: " << isAv << endl;
@@ -116,8 +117,8 @@ void Drivers::loadDrivers(){
         fin >> nm >> vType;
         fin.ignore(); getline(fin,notes);
         fin >> id;
-        fin >> isAvail >> allowPets>> allowHandicap;
-        driverVect.push_back(new Driver(nm,vType,notes,id,isAvail,allowPets,allowHandicap));
+        fin >> isAvail >> allowPets>> allowHandicap >> driverRating;
+        driverVect.push_back(new Driver(nm,vType,notes,id,isAvail,allowPets,allowHandicap,driverRating));
     }
     //Close file
     fin.close();
@@ -135,6 +136,7 @@ void Drivers::saveDrivers(){
         temp = *it;
         //Saves all the variable data in order of object instanciation
         fout << temp->getName() << " " << temp->getVehicleType()<< "\n" << temp->getNotes()<< "\n" << temp->getdID()<< "\n" << temp->getIsAvailable()<< " " << temp->getAllowPets() << " "<< temp->getHandicapAvail() << "\n";
+        fout << temp->getDriverRating();
     }
     //close output file
     fout.close();

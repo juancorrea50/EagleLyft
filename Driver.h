@@ -9,7 +9,7 @@ class Driver{
     //Default Contructor
     Driver();
     //Param Constructor
-    Driver(string nm, string vType, string ntes, unsigned long int drID, bool isAvail, bool aPets, bool handAvail);
+    Driver(string nm, string vType, string ntes,int drID, bool isAvail, bool aPets, bool handAvail, float dRating);
     //Setters
     void setName(string nm);
     void setVehicleType(string vType);
