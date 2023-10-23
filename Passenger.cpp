@@ -37,7 +37,9 @@ using namespace std;
     void Passenger::setName(string nm){
         name = nm;
     }
-    void Passenger::setPaymentPref(string pprf){
+    
+    void Passenger::setPaymentPref(string pprf)
+    {
         if(pprf == "card"){
             paymentPref = card;
         } else if(pprf == "cash"){
@@ -47,7 +49,8 @@ using namespace std;
     void Passenger::setRatingReq(float ratReq){
         ratingRequirement = ratReq;
     }
-    void Passenger::setHasPets(char inVal){
+    void Passenger::setHasPets(char inVal)
+    {
         if(inVal == 'y' || inVal == 'Y'){
             hasPets = true;
         } else if(inVal == 'n' || inVal == 'N'){

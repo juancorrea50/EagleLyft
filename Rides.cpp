@@ -70,7 +70,6 @@ bool Rides::compBool(Passenger* pObj, Driver* dObj, int pCount){
     if(dObj->getDriverRating() >= pObj->getRatingRequirement()){
         //cout << "Driver meets passenger rating requirement." << endl;
         if(dObj->getIsAvailable() == true && dObj->getVehicleCap() >= pCount){
-            cout << dObj->getIsAvailable() << endl;
             if(dObj->getAllowPets() == pObj->getHasPets() || (dObj->getAllowPets() == true && pObj->getHasPets() == false)){
                 cout << "Pets are allowed on this ride." << endl << "(If you do not have pets please consider a driver that does not allow them.)" << endl;
                 if(dObj->getHandicapAvail() == pObj->getIsHandicap() || (dObj->getHandicapAvail() == true && pObj->getIsHandicap() == false)){
@@ -99,7 +98,7 @@ void Rides::createRide(Passenger* pObj, Driver* dObj){
     if(hasPassedCheck == true){
         if(pObj->getPaymentPref() == "Cash"){
             cout << endl;
-            cout << "All cash users must pay the estimated cost upfront with the driver!" << endl;
+            cout << "****All cash users must pay the estimated cost upfront with the driver!****" << endl;
             cout << endl;
         }
         //Instantiate object with pickup location, time, pCount, and rStat
@@ -159,7 +158,7 @@ void Rides::printRides(){
                     cout << "Drop off Location: " << (*it)->getDropOffLocation() << endl;
                     cout << "Pick up Time and Date: " << (*it)->getPickUpTime()<< endl;
                     cout << "Drop off Time and Date: " <<(*it)->getDropOffTime()<< endl << endl;
-                } else {
+                } else if(it == ridesVect.end()-1) {
                     cout << "None available" << endl << endl;
                 }
             }
@@ -176,7 +175,7 @@ void Rides::printRides(){
                     cout << "Drop off Location: " << (*it)->getDropOffLocation() << endl;
                     cout << "Pick up Time and Date: " << (*it)->getPickUpTime()<< endl;
                     cout << "Drop off Time and Date: " <<(*it)->getDropOffTime()<< endl << endl;
-                } else {
+                } else if(it == ridesVect.end()-1) {
                     cout << "None available" << endl << endl;
                 }
             }
@@ -193,7 +192,7 @@ void Rides::printRides(){
                     cout << "Drop off Location: " << (*it)->getDropOffLocation() << endl;
                     cout << "Pick up Time and Date: " << (*it)->getPickUpTime()<< endl;
                     cout << "Drop off Time and Date: " <<(*it)->getDropOffTime()<< endl << endl;
-                } else {
+                } else if(it == ridesVect.end()-1) {
                     cout << "None available" << endl << endl;
                 }
             }
@@ -265,9 +264,17 @@ void Rides::editRide(int id){
 void Rides::cancelRide(int id){
     Ride* temp = findRide(id);
 
-    temp->setRideStatus("Cancelled");
-    temp->getDriver()->setIsAvailable('y');
-    cout << "Ride has been Cancelled."<< endl;
+    for(auto it = ridesVect.begin(); it!=ridesVect.end();++it){
+        //Create an if statement to ensure that the only active ride with the matched ID gets cancelled
+        if((*it)->getRideStatus() =="Active" && (*it)->getRideID()==temp->getRideID()){
+            temp->setRideStatus("Cancelled");
+            temp->getDriver()->setIsAvailable('y');
+            cout << endl;
+            cout << "Ride has been Cancelled."<< endl << endl;
+        }
+
+    }
+
 }
 
 //Load Rides from file

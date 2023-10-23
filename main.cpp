@@ -28,7 +28,7 @@ int main(){
     while(choice == -1 || choice != 0){
         cout << "Welcome to EagleLyft:" << endl << endl;
         cout << "0- Quit 1- Add Driver 2- Add Passenger 3- Create Ride 4- Print Passengers 5- Print Drivers " << endl;
-        cout << "6- Print Rides 7- Delete Passenger 8- Cancel Ride 9- Delete Driver 10- Edit 11- Print Rides by ID" << endl;
+        cout << "6- Print Rides 7- Delete Passenger 8- Cancel Ride 9- Delete Driver 10- Edit 11- Print Rides by Driver ID" << endl;
         cout << "Please choose an option: " << endl;
         cin >> choice;
 
@@ -44,9 +44,9 @@ int main(){
                 passengers.addPassenger();
             break;
             case 3:
-                cout << "Please enter the Passenger's ID" << endl;
+                cout << "Please enter the Passenger's ID(1XXXXX)" << endl;
                 cin >> id;
-                cout << "Please enter the requested Driver's ID" << endl;
+                cout << "Please enter the requested Driver's ID(1XXXXX)" << endl;
                 cin >> id2;
                 //Create ride
                 rides.createRide(passengers.findPassenger(id),drivers.findDriver(id2));
@@ -65,19 +65,19 @@ int main(){
             break;
             case 7:
                 //Delete passenger
-                cout << "Enter id to delete passenger" << endl;
+                cout << "Enter id to delete passenger(1XXXXX)" << endl;
                 cin >> id;
                 passengers.deletePassenger(id);
             break;
             case 8:
                 //Cancel Ride
-                cout << "Enter ride ID to cancel" << endl;
+                cout << "Enter ride ID to cancel(1XXXXX)" << endl;
                 cin >> id;
                 rides.cancelRide(id);
             break;
             case 9:
                 //Delete Driver
-                cout << "Enter id to delete passenger" << endl;
+                cout << "Enter id to delete passenger(1XXXXX)" << endl;
                 cin >> id;
                 drivers.deleteDriver(id);
             break;
@@ -89,19 +89,19 @@ int main(){
                     switch (secondChoice){
                     case 1:
                     //Passenger
-                        cout << "Enter the id of the passenger you would like to edit" << endl;
+                        cout << "Enter the id of the passenger you would like to edit(1XXXXX)" << endl;
                         cin >> id;
                         passengers.editPassenger(id);
                     break;
                     case 2:
                     //Driver
-                        cout << "Enter the id of the driver you would like to edit" << endl;
+                        cout << "Enter the id of the driver you would like to edit(1XXXXX)" << endl;
                         cin >> id;
                         drivers.editDriver(id);
                     break;
                     case 3:
                     //Ride
-                        cout << "Enter the id of the ride you would like to edit" << endl;
+                        cout << "Enter the id of the ride you would like to edit(1XXXXX)" << endl;
                         cin >> id;
                         rides.editRide(id);
                     break;
@@ -112,7 +112,7 @@ int main(){
                 }
             break;
             case 11:
-                cout << "Enter the id of the driver: " << endl;
+                cout << "Enter the id of the driver(1XXXXX)" << endl;
                 cin >> id;
                 rides.printRidesByDriver(id);
             break;
