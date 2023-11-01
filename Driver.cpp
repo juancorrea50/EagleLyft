@@ -20,15 +20,7 @@ Driver::Driver(string nm, string vType, string ntes, int drID, bool isAvail, boo
     name = nm;
     vehicleType = vType;
     notes = ntes;
-    if(vType == "sedan"){
-        vehicleCap = 4;
-    } else if(vType == "coupe"){
-        vehicleCap = 2;
-    } else if(vType == "suv"){
-        vehicleCap = 5;
-    } else if(vType == "van"){
-        vehicleCap = 8;
-    }
+    vehicleType = vType;
     dID = drID;
     isAvailable = isAvail;
     allowPets = aPets;
