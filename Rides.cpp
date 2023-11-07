@@ -96,6 +96,7 @@ void Rides::createRide(Passenger* pObj, Driver* dObj){
     bool hasPassedCheck = compBool(pObj, dObj,pCount);
 
     if(hasPassedCheck == true){
+        //Let cash payers know that cash will be paid upfront
         if(pObj->getPaymentPref() == "Cash"){
             cout << endl;
             cout << "****All cash users must pay the estimated cost upfront with the driver!****" << endl;

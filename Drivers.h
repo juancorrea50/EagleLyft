@@ -2,6 +2,10 @@
 #define DRIVERS_H
 
 #include "Driver.h"
+#include "Economy.h"
+#include "Basic.h"
+#include "Group.h"
+#include "Luxury.h"
 #include <vector>
 
 class Drivers{

@@ -5,7 +5,7 @@
 
 class Basic: public Driver{
     public:
-    Basic(int);
+    Basic(string,string, string,int , bool, bool, bool, float, int);
     //printInfo
     void printInfo();
     private:

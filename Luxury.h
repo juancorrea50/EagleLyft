@@ -1,5 +1,5 @@
-#ifndef GROUP_H
-#define GROUP_H
+#ifndef LUXURY_H
+#define LUXURY_H
 #include "Driver.h"
 #include <string>
 

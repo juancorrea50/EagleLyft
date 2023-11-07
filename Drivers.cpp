@@ -21,11 +21,27 @@ int Drivers::incDriverCount(){
 
 //Add Passenger to vector
 void Drivers::addDriver(){
-    string nm, vType, notes;
+    string nm, vType, notes, dType;
     float driverRating;
+    int pSeats;
     bool isAvail, allowHandicap, allowPets;
     char isAv,aHandi, aPets;
     Driver* temp;
+
+    //Enter the type of driver (economy,basic,group,luxury)
+    cout << "Enter the maximum amount of passengers the driver can carry" << endl;
+    cin >> pSeats;
+    if(pSeats = 2){
+        cout << "Determine if you would like to be a basic or economy driver." << endl;
+        cout << "A basic driver has less than 2 available seats and an economy driver has 2-4 available seats" << endl;
+        cin >> dType;
+    } else if(pSeats >=5 && pSeats <= 7){
+        cout << "This driver will be classified as a Group driver." << endl;
+        dType = "group";
+    } else if(pSeats > 7){
+        cout << "This driver will be classified as a luxury driver." << endl;
+        dType = "luxury";
+    }
 
     cout << "Enter driver's name: " << endl;
     cin >> nm;
@@ -57,7 +73,7 @@ void Drivers::addDriver(){
         allowHandicap = false;
     }
 
-    cout << "Do you have pets for your trips? (y/n)" << endl;
+    cout << "Do you allow pets for your trips? (y/n)" << endl;
     cin >> aPets;
     cin.ignore();
     if((char)tolower(aPets) == 'y'){
@@ -69,9 +85,20 @@ void Drivers::addDriver(){
     getline(cin, notes);
     //cin.ignore();
 
-    //Increment Passenger count
+    //Increment Driver count
     incDriverCount();
     
+    //If statement to determine which driver object to create 
+    if(dType == "economy"){
+        temp = new Economy(nm, vType, notes,(driverCount+100000), isAvail, allowPets, allowHandicap, 5.00, pSeats);
+    } else if(dType == "basic"){
+        temp = new Basic(nm, vType, notes,(driverCount+100000), isAvail, allowPets, allowHandicap, 5.00, pSeats);
+    } else if(dType == "group"){
+        temp = new Group(nm, vType, notes,(driverCount+100000), isAvail, allowPets, allowHandicap, 5.00, pSeats);
+    } else if(dType == "luxury"){
+        temp = new Luxury(nm, vType, notes,(driverCount+100000), isAvail, allowPets, allowHandicap, 5.00, pSeats);
+    }
+
     //Create temp object in memory and push a new object pointer that uses driverCount+100000 to create a unique ID number for driver's ID and Base value for driver rating is 5.00
     temp = new Driver(nm, vType, notes,(driverCount+100000), isAvail, allowPets, allowHandicap, 5.00);
     driverVect.push_back(temp);

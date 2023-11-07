@@ -5,7 +5,7 @@
 
 class Economy: public Driver{
     public:
-    Economy(int);
+    Economy(string,string, string,int , bool, bool, bool, float, int);
     //printInfo
     void printInfo();
     private:
