@@ -5,7 +5,7 @@
 
 class Group: public Driver{
     public:
-    Group(int);
+    Group(string nm, string vType, string ntes,int drID, bool isAvail, bool aPets, bool handAvail, float dRating,int pSeats);
     //printInfo
     void printInfo();
     private:

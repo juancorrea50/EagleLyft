@@ -5,7 +5,7 @@
 
 class Luxury: public Driver{
     public:
-    Luxury(int);
+    Luxury(string,string, string,int , bool, bool, bool, float, int);
     //printInfo
     void printInfo();
     private:

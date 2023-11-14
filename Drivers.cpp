@@ -31,7 +31,7 @@ void Drivers::addDriver(){
     //Enter the type of driver (economy,basic,group,luxury)
     cout << "Enter the maximum amount of passengers the driver can carry" << endl;
     cin >> pSeats;
-    if(pSeats = 2){
+    if(pSeats == 2){
         cout << "Determine if you would like to be a basic or economy driver." << endl;
         cout << "A basic driver has less than 2 available seats and an economy driver has 2-4 available seats" << endl;
         cin >> dType;
@@ -41,6 +41,8 @@ void Drivers::addDriver(){
     } else if(pSeats > 7){
         cout << "This driver will be classified as a luxury driver." << endl;
         dType = "luxury";
+    } else {
+        cout << "Error in driver creation. Further data entry will corrupt the driver data." << endl;
     }
 
     cout << "Enter driver's name: " << endl;
