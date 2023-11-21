@@ -111,21 +111,7 @@ void Drivers::printDrivers(){
     char iHandi;
     char hPets, isAv;
     for(i=0;i<driverVect.size();i++){
-        isAv = (driverVect.at(i)->getIsAvailable() == true) ? 'Y' : 'N';
-        iHandi = (driverVect.at(i)->getHandicapAvail() == true) ? 'Y' : 'N';
-        hPets = (driverVect.at(i)->getAllowPets() == true) ? 'Y' : 'N';
-        
-        cout <<"Driver: " <<endl;
-        cout << "Name: " << driverVect.at(i)->getName() << endl;
-        cout << "ID: (D)" << driverVect.at(i)->getdID() << endl;
-        cout << "Rating: " << driverVect.at(i)->getDriverRating() << endl;
-        cout << "Vehicle Type: " << driverVect.at(i)->getVehicleType() << endl;
-        cout << "With a cap of: " << driverVect.at(i)->getVehicleCap() << endl;
-        cout << "Is Available: " << isAv << endl;
-        cout << "Handicap Capable: " << iHandi << endl;
-        cout << "Allows Pets: " << hPets<< endl;
-        cout << "Notes: " << driverVect.at(i)->getNotes() << endl;
-        cout << endl;
+        driverVect.at(i)->printInfo();
     }
 }
 //Load Drivers from file

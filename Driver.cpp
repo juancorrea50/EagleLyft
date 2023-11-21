@@ -66,3 +66,16 @@ void Driver::setHandicapAvail(char inVal){
         handicapAvail = false;
     }
 }
+void Driver::printInfo() const{
+    cout <<"Driver: " <<endl;
+        cout << "Name: " << getName() << endl;
+        cout << "ID: (D)" << getdID() << endl;
+        cout << "Rating: " << getDriverRating() << endl;
+        cout << "Vehicle Type: " << getVehicleType() << endl;
+        cout << "With a cap of: " << getVehicleCap() << endl;
+        cout << "Is Available: " << getIsAvailable() << endl;
+        cout << "Handicap Capable: " << getHandicapAvail() << endl;
+        cout << "Allows Pets: " << getAllowPets()<< endl;
+        cout << "Notes: " << getNotes() << endl;
+        cout << endl;
+}

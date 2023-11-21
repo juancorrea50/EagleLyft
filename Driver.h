@@ -29,6 +29,7 @@ class Driver{
     bool getIsAvailable() const {return isAvailable;}
     bool getAllowPets() const {return allowPets;}
     bool getHandicapAvail() const {return handicapAvail;}
+    virtual void printInfo() const;
 
     
 
