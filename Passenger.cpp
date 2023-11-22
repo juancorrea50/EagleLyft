@@ -1,4 +1,6 @@
 #include <string>
+#include <iostream>
+#include <fstream>
 #include "Passenger.h"
 
 
@@ -64,4 +66,19 @@ using namespace std;
             isHandicap = false;
         }
     }
-
+    //Overloaded insertion and extraction operators
+    ostream& operator<<(ostream& fout, const Passenger& p){
+        fout << p.name << " " <<  p.getPaymentPref()<< " " << p.pID << " " << p.ratingRequirement << " " << p.isHandicap << " " << p.hasPets << "\n";
+        return fout;
+    }
+    istream& operator>>(istream& fin, Passenger& p){
+        string ppStr;
+        //Input and push loaded data into the vector
+        fin >> p.name >> ppStr >> p.pID >> p.ratingRequirement >> p.isHandicap >> p.hasPets;
+        if(ppStr == "Cash"){
+            p.setPaymentPref("cash");
+        } else if(ppStr == "Card"){
+            p.setPaymentPref("card");
+        }
+        return fin;
+    }

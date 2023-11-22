@@ -95,28 +95,17 @@ void Passengers::printPassengers(){
 //Load passengers from file
 void Passengers::loadPassengers(){
     ifstream fin;
-    //Variables to fin
-    string n, ppStr;
-    pPref pprf;
-    float ratReq;
-    bool isHC, hsPets;
-    char iHandi, hPets;
-    int id;
     
     //Open data file named passengers.dat
     fin.open("Passengers.dat");
     //Input for passenger count fin.ignore() ignores the newline
     fin >> passengerCount; fin.ignore();
-    //Input and push loaded data into the vector
-    for(int i=0;i<passengerCount;i++){
-        fin >> n >> ppStr >> id >> ratReq >> isHC >> hsPets;
-        if(ppStr == "Cash"){
-            pprf = cash;
-        } else if(ppStr == "Card"){
-            pprf = card;
-        }
-        passVector.push_back(new Passenger(n, pprf,id,ratReq,isHC,hsPets));
 
+    //Input and push loaded data into the vector **Uses the overloaded extraction operator**
+    for(int i=0;i<passengerCount;i++){
+        Passenger* p = new Passenger();
+        fin >> *p;
+        passVector.push_back(p);    
     }
     //Close file
     fin.close();
@@ -128,12 +117,9 @@ void Passengers::savePassengers(){
     fout << passengerCount << endl;
     Passenger* temp;
 
-    //Use iterator for iterating through the vector
+    //Use iterator for iterating through the vector **Uses the overloaded insertion operator**
     for(auto it = passVector.begin(); it != passVector.end(); ++it){
-        //temp becomes the passenger pointer that it points to
-        temp = *it;
-        //Saves all the variable data in order of object instanciation
-        fout << temp->getName() <<" "<< temp->getPaymentPref()<< " " << temp->getpID()<< " " << temp->getRatingRequirement()<< " " << temp->getIsHandicap()<< " " << temp->getHasPets() << "\n";
+        fout << **it;
     }
     //close output file
     fout.close();

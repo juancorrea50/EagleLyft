@@ -24,6 +24,9 @@ class Passenger{
     bool getHasPets() const {return hasPets;}
     bool getIsHandicap() const {return isHandicap;}
     int getpID() const {return pID;}
+    //Operator overload of the extractor and insertion operators
+    friend ostream& operator<<(ostream& fout, const Passenger& p);
+    friend istream& operator>>(istream& fin, Passenger& p);
 
 
     private:
@@ -35,4 +38,5 @@ class Passenger{
     bool isHandicap;
 
 };
+
 #endif
